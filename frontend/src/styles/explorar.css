@@ -1,0 +1,183 @@
+/* ===== Paleta basada en tu imagen azul ===== */
+:root {
+    --bg: #e9f0ff;
+    --text: #0d1b3a;
+    --primary: #0a4bff;
+    --primary-light: #c5d7ff;
+    --nav-bg: #ffffff;
+    --card-bg: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Modo oscuro ===== */
+body.dark {
+    --bg: #0d0f14;
+    --text: #ffffff;
+    --primary: #5a8cff;
+    --primary-light: #1c2333;
+    --nav-bg: #16181f;
+    --card-bg: #1e212a;
+    --shadow: rgba(255, 255, 255, 0.05);
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    transition: 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* ===== Rombos ===== */
+.rombo {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    background: var(--primary-light);
+    transform: rotate(45deg);
+    filter: blur(6px);
+    opacity: 0.35;
+    z-index: -1;
+}
+
+.r1 { top: -60px; left: -40px; }
+.r2 { top: 200px; right: -80px; }
+.r3 { bottom: -60px; left: 40%; }
+
+/* ===== Navbar ===== */
+.topbar {
+    background: var(--nav-bg);
+    padding: 18px 30px;
+    box-shadow: 0 4px 10px var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topbar h1 {
+    font-size: 22px;
+    color: var(--primary);
+}
+
+.btn-nav {
+    padding: 8px 16px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: #fff;
+    text-decoration: none;
+    transition: 0.25s ease;
+}
+
+.btn-nav:hover {
+    background: #0039d1;
+    transform: translateY(-3px);
+}
+
+.dark-btn {
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* ===== Hero ===== */
+.hero {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero span {
+    color: var(--primary);
+}
+
+/* ===== estadísticas ===== */
+.stats-section { padding: 60px 30px; }
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.stat-box {
+    background: var(--card-bg);
+    padding: 28px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 6px 14px var(--shadow);
+    transition: 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-6px);
+}
+
+.stat-box i {
+    font-size: 42px;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+/* ===== Categorías ===== */
+.categories { padding: 60px 30px; }
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+}
+
+.category-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 6px 14px var(--shadow);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+}
+
+.category-card i {
+    font-size: 40px;
+    color: var(--primary);
+    margin-bottom: 12px;
+}
+
+/* ===== Info cards ===== */
+.info-section { padding: 60px 30px; }
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+.info-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 14px var(--shadow);
+    text-align: center;
+}
+
+.info-card i {
+    font-size: 42px;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+/* ===== Footer ===== */
+footer {
+    padding: 25px;
+    text-align: center;
+    background: var(--nav-bg);
+    margin-top: 50px;
+    box-shadow: 0 -3px 10px var(--shadow);
+}

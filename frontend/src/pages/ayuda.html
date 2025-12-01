@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Ayuda – BlogMe</title>
+
+    <link rel="stylesheet" href="../styles/ayuda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ROMBOS FONDO -->
+    <div class="rombo r1"></div>
+    <div class="rombo r2"></div>
+    <div class="rombo r3"></div>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <h1>❓ Ayuda — BlogMe</h1>
+
+        <nav>
+            <a href="./landing.html" class="btn-nav"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="./explorar.html" class="btn-nav"><i class="fa-solid fa-compass"></i> Explorar</a>
+            <a href="./acerca.html" class="btn-nav"><i class="fa-solid fa-info-circle"></i> Acerca</a>
+        </nav>
+
+        <button id="darkToggle" class="dark-btn">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h2>¿Necesitas ayuda? <span>Estamos aquí para apoyarte</span></h2>
+        <p>Guías rápidas, preguntas frecuentes y soporte directo para sacarle todo el provecho a BlogMe.</p>
+    </section>
+
+    <!-- Buscador de ayuda -->
+    <section class="help-search">
+        <div class="search-card">
+            <input id="helpSearch" type="search" placeholder="Buscar tema — ej. publicar, etiquetas, privacidad..." />
+            <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="quick-links">
+            <button class="quick" data-filter="publicar">Publicar</button>
+            <button class="quick" data-filter="perfil">Perfil</button>
+            <button class="quick" data-filter="privacidad">Privacidad</button>
+            <button class="quick" data-filter="cuenta">Cuenta</button>
+        </div>
+    </section>
+
+    <!-- FAQ (acordeón) -->
+    <section class="faq-section">
+        <h3>🧾 Preguntas Frecuentes</h3>
+
+        <div id="faqContainer" class="faq-grid">
+            <!-- items generados por JS -->
+        </div>
+    </section>
+
+    <!-- Sección de recursos rápidos -->
+    <section class="resources">
+        <h3>🔧 Recursos y Guías Rápidas</h3>
+
+        <div class="resources-grid">
+            <div class="res-card">
+                <i class="fa-solid fa-file-lines"></i>
+                <h4>Cómo crear tu primera publicación</h4>
+                <p>Guía paso a paso para redactar, etiquetar y publicar correctamente.</p>
+                <a href="#" class="link">Abrir guía →</a>
+            </div>
+
+            <div class="res-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Configuración de privacidad</h4>
+                <p>Controla quién ve tus publicaciones y tu información pública.</p>
+                <a href="#" class="link">Abrir guía →</a>
+            </div>
+
+            <div class="res-card">
+                <i class="fa-solid fa-circle-info"></i>
+                <h4>Soporte y contacto</h4>
+                <p>Envía un ticket o consulta con nuestro equipo de soporte.</p>
+                <a href="#contactForm" class="link">Contactar →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulario de contacto -->
+    <section id="contactForm" class="contact-section">
+        <h3>✉️ Contacta con soporte</h3>
+
+        <form id="supportForm" class="support-form">
+            <input id="name" type="text" placeholder="Tu nombre" required />
+            <input id="email" type="email" placeholder="Tu email" required />
+            <select id="topic" required>
+                <option value="">Selecciona un tema</option>
+                <option value="publicar">Publicar</option>
+                <option value="perfil">Perfil</option>
+                <option value="privacidad">Privacidad</option>
+                <option value="otros">Otros</option>
+            </select>
+            <textarea id="message" rows="5" placeholder="Describe tu problema o pregunta" required></textarea>
+            <button type="submit" class="btn-submit">Enviar mensaje</button>
+            <p id="formMsg" class="form-msg" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 BlogMe — Centro de ayuda.</p>
+    </footer>
+
+    <script src="../js/ayuda.js"></script>
+    <script>
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+            document.body.style.transition = "opacity .5s";
+            document.body.style.opacity = "1";
+        }, 50);
+    </script>
+</body>
+</html>

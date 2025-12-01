@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorar – BlogMe</title>
+
+    <link rel="stylesheet" href="../styles/explorar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ROMBOS FONDO -->
+    <div class="rombo r1"></div>
+    <div class="rombo r2"></div>
+    <div class="rombo r3"></div>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <h1>🔎 Explorar BlogMe</h1>
+
+        <nav>
+            <a href="./landing.html" class="btn-nav"><i class="fa-solid fa-circle-question"></i> Inicio</a>
+            <a href="./ayuda.html" class="btn-nav"><i class="fa-solid fa-circle-question"></i> Ayuda</a>
+            <a href="./acerca.html" class="btn-nav"><i class="fa-solid fa-circle-info"></i> Acerca</a>
+        </nav>
+
+        <button id="darkToggle" class="dark-btn">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </header>
+
+    <!-- Hero principal -->
+    <section class="hero">
+        <h2>Descubre todo lo que puedes hacer con <span>BlogMe</span></h2>
+        <p>Explora funciones, estadísticas, categorías y todo lo que ofrece la plataforma.</p>
+    </section>
+
+    <!-- Sección de estadísticas -->
+    <section class="stats-section">
+        <h3>📊 Estadísticas Generales</h3>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <i class="fa-solid fa-user-pen"></i>
+                <h4 id="stat-posts">0</h4>
+                <p>Publicaciones creadas</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-users"></i>
+                <h4 id="stat-users">0</h4>
+                <p>Usuarios activos</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-comments"></i>
+                <h4 id="stat-comments">0</h4>
+                <p>Comentarios registrados</p>
+            </div>
+
+            <div class="stat-box">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4 id="stat-growth">0%</h4>
+                <p>Crecimiento mensual</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories">
+        <h3>📂 Explora Por Categorías</h3>
+
+        <div id="categoryContainer" class="category-grid"></div>
+    </section>
+
+    <!-- Sección informativa premium -->
+    <section class="info-section">
+        <h3>💡 ¿Qué puedes hacer en BlogMe?</h3>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <i class="fa-solid fa-pen-nib"></i>
+                <h4>Crear Contenido Profesional</h4>
+                <p>Comparte ideas, artículos, noticias o proyectos con herramientas optimizadas.</p>
+            </div>
+
+            <div class="info-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Interfaz Extra Rápida</h4>
+                <p>BlogMe está diseñado para ser ligero, limpio y moderno con carga rápida.</p>
+            </div>
+
+            <div class="info-card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Seguridad y Privacidad</h4>
+                <p>Tu información siempre está protegida mediante estándares modernos.</p>
+            </div>
+
+            <div class="info-card">
+                <i class="fa-solid fa-layer-group"></i>
+                <h4>Organización Inteligente</h4>
+                <p>Categorías dinámicas, filtros y sistema de etiquetas para clasificar mejor tu contenido.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 BlogMe — Tu plataforma para crear y explorar contenido digital.</p>
+    </footer>
+
+    <script src="../js/explorar.js"></script>
+
+    <script>
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+            document.body.style.transition = "opacity .6s";
+            document.body.style.opacity = "1";
+        }, 50);
+    </script>
+
+</body>
+</html>

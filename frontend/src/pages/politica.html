@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Política y Términos – BlogMe</title>
+
+  <!-- Estilos (igual estilo visual que explorar) -->
+  <link rel="stylesheet" href="../styles/politica.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- ROMBOS FONDO (igual que explorar) -->
+  <div class="rombo r1" aria-hidden="true"></div>
+  <div class="rombo r2" aria-hidden="true"></div>
+  <div class="rombo r3" aria-hidden="true"></div>
+
+  <!-- Topbar (igual que explorar) -->
+  <header class="topbar" role="banner">
+    <h1>📄 Política y Términos — BlogMe</h1>
+
+    <nav>
+      <a href="./landing.html" class="btn-nav"><i class="fa-solid fa-house"></i> Inicio</a>
+      <a href="./explorar.html" class="btn-nav"><i class="fa-solid fa-compass"></i> Explorar</a>
+      <a href="./ayuda.html" class="btn-nav"><i class="fa-solid fa-circle-question"></i> Ayuda</a>
+    </nav>
+
+    <button id="darkToggle" class="dark-btn" aria-pressed="false" aria-label="Alternar modo oscuro">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </header>
+
+  <!-- Layout: sidebar TOC + main (mismo concepto visual que explorar) -->
+  <div class="page-container">
+    <aside class="toc" id="toc" aria-label="Tabla de contenidos">
+      <h3>Contenido</h3>
+
+      <div class="search-wrap">
+        <input id="tocSearch" type="search" placeholder="Buscar secciones..." aria-label="Buscar secciones">
+        <button id="clearSearch" aria-label="Limpiar búsqueda"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <nav>
+        <ul id="tocList"></ul>
+      </nav>
+
+      <small class="toc-update">Última actualización: <span id="updatedDate">2025-11-25</span></small>
+    </aside>
+
+    <main class="main-content" id="mainContent" role="main">
+      <section class="hero reveal" aria-labelledby="heroTitle">
+        <h2 id="heroTitle">Transparencia, seguridad y normas claras</h2>
+        <p class="subtitle">Lee en detalle las políticas, términos de uso, privacidad y derechos en BlogMe.</p>
+      </section>
+
+      <div class="controls">
+        <button id="expandAll" class="btn-primary">Expandir todo</button>
+        <button id="collapseAll" class="btn-ghost">Colapsar todo</button>
+      </div>
+
+      <!-- Secciones (data-toc usadas por JS para generar TOC automáticamente) -->
+      <article class="section-card reveal" data-toc="Introducción" id="s-intro" tabindex="-1">
+        <h3>1. Introducción</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-intro">Abrir / Cerrar</button>
+          <div id="c-intro" class="accordion-panel">
+            <p>Bienvenido a <strong>BlogMe</strong>. Este documento presenta las políticas y términos extendidos para garantizar un uso seguro y transparente de la plataforma.</p>
+            <ul>
+              <li>Objetivo: proteger a usuarios y plataforma.</li>
+              <li>Alcance: aplica a todos los visitantes y cuentas registradas.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Definiciones" id="s-def" tabindex="-1">
+        <h3>2. Definiciones Generales</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-def">Abrir / Cerrar</button>
+          <div id="c-def" class="accordion-panel">
+            <ul>
+              <li><strong>Usuario:</strong> Persona que usa BlogMe.</li>
+              <li><strong>Contenido:</strong> Publicaciones, comentarios, imágenes, enlaces.</li>
+              <li><strong>Administrador:</strong> Moderador y responsable del sistema.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Términos de Uso" id="s-terms" tabindex="-1">
+        <h3>3. Términos Generales de Uso</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-terms">Abrir / Cerrar</button>
+          <div id="c-terms" class="accordion-panel">
+            <ul>
+              <li>Uso con fines creativos y respetuosos.</li>
+              <li>No publicar contenido ilegal, dañino o difamatorio.</li>
+              <li>Responsabilidad sobre la veracidad del contenido publicado.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Reglas de Publicaciones" id="s-pub" tabindex="-1">
+        <h3>4. Reglas de Publicaciones</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-pub">Abrir / Cerrar</button>
+          <div id="c-pub" class="accordion-panel">
+            <ul>
+              <li>Contenido original o autorizado;</li>
+              <li>Prohibido spam y enlaces maliciosos;</li>
+              <li>Moderación: admins pueden eliminar contenido en incumplimiento.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Privacidad" id="s-privacy" tabindex="-1">
+        <h3>5. Privacidad y Protección de Datos</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-privacy">Abrir / Cerrar</button>
+          <div id="c-privacy" class="accordion-panel">
+            <p>Compromisos: cifrado, no compartir sin consentimiento, derecho de acceso/rectificación/eliminación.</p>
+            <h4>Retención y eliminación</h4>
+            <p>Datos inactivos pueden archivarse tras 24 meses. Usuario puede solicitar eliminación inmediata.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Seguridad" id="s-security" tabindex="-1">
+        <h3>6. Seguridad del Sistema</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-security">Abrir / Cerrar</button>
+          <div id="c-security" class="accordion-panel">
+            <ul>
+              <li>Protección contra fuerza bruta y ataques automatizados.</li>
+              <li>Validaciones server/client, CSRF, XSS mitigations.</li>
+              <li>Backups regulares y planes de recuperación.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Responsabilidades Usuario" id="s-user" tabindex="-1">
+        <h3>7. Responsabilidades del Usuario</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-user">Abrir / Cerrar</button>
+          <div id="c-user" class="accordion-panel">
+            <ul>
+              <li>No vulnerar ni manipular el sistema.</li>
+              <li>Respetar derechos de autor y no compartir credenciales.</li>
+              <li>Reportar fallos o abusos por los canales oficiales.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Responsabilidades Admin" id="s-admin" tabindex="-1">
+        <h3>8. Responsabilidades del Administrador</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-admin">Abrir / Cerrar</button>
+          <div id="c-admin" class="accordion-panel">
+            <ul>
+              <li>Moderación con criterios claros y registros auditables.</li>
+              <li>Protección de datos con principio de mínimo privilegio.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Derechos de Autor" id="s-copyright" tabindex="-1">
+        <h3>9. Derechos de Autor</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-copyright">Abrir / Cerrar</button>
+          <div id="c-copyright" class="accordion-panel">
+            <p>El contenido pertenece al creador; al publicarlo otorga permiso para mostrarlo dentro de BlogMe. Reclamaciones seguirán proceso de verificación.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Cookies" id="s-cookies" tabindex="-1">
+        <h3>10. Cookies y Almacenamiento Local</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-cookies">Abrir / Cerrar</button>
+          <div id="c-cookies" class="accordion-panel">
+            <ul>
+              <li>Uso de almacenamiento local para preferencias UI.</li>
+              <li>No se usan cookies de terceros para rastreo sin consentimiento.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Cambios a Terms" id="s-changes" tabindex="-1">
+        <h3>11. Modificaciones a los Términos</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-changes">Abrir / Cerrar</button>
+          <div id="c-changes" class="accordion-panel">
+            <p>BlogMe puede actualizar estos términos y notificará cambios importantes dentro de la plataforma.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="section-card reveal" data-toc="Contacto" id="s-contact" tabindex="-1">
+        <h3>12. Contacto</h3>
+        <div class="accordion">
+          <button class="accordion-toggle" aria-expanded="false" aria-controls="c-contact">Abrir / Cerrar</button>
+          <div id="c-contact" class="accordion-panel">
+            <p>Soporte: <strong>soporte@blogme.com</strong>. También disponible el formulario en el panel de usuario.</p>
+          </div>
+        </div>
+      </article>
+
+      <div class="extras reveal">
+        <h3>Descargas</h3>
+        <p>Próximamente: PDF descargable y versión imprimible.</p>
+        <div class="btn-row">
+          <a class="btn-primary" href="#" aria-disabled="true">Descargar PDF (próximamente)</a>
+          <a class="btn-ghost" href="./acerca.html">Resumen ejecutivo</a>
+        </div>
+      </div>
+
+      <footer class="page-footer reveal">
+        <p>© 2025 BlogMe — Tu plataforma para crear y compartir. <span class="muted">Última revisión: <span id="footerDate">2025-11-25</span></span></p>
+      </footer>
+    </main>
+  </div>
+
+  <!-- Back to top -->
+  <button id="backTop" class="back-top" aria-label="Volver arriba"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Script (misma funcionalidad avanzada) -->
+  <script src="../js/politica.js" defer></script>
+</body>
+</html>
+

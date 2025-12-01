@@ -1,0 +1,1779 @@
+/* ---------------------------------------------------------
+   BLOGME — PUBLICACIONES (ULTRA EDITION V4.2)
+   Diseño profesional tipo Instagram + X + Glass UI
+   Animaciones, glassmorphism, micro-interacciones,
+   grids inteligentes, modo oscuro, variables globales
+---------------------------------------------------------- */
+
+/* ---------------------------------------------------------
+   VARIABLES DE TEMA
+---------------------------------------------------------- */
+
+:root {
+  /* Texto completamente visible SIEMPRE */
+  --text: #111;
+  --text-soft: #333;
+  --text-muted: #555;
+
+  /* Modo claro */
+  --bg: #ffffff;
+  --bg-secondary: rgba(255,255,255,0.85);
+  --card: rgba(255,255,255,0.65);
+  --border: rgba(0,0,0,0.15);
+
+  /* Acento */
+  --accent: #0d6bff;
+  --accent-soft: rgba(13,107,255,0.08);
+
+  /* Sombra y blur */
+  --shadow: 0 4px 18px rgba(0,0,0,0.08);
+  --shadow-hover: 0 6px 22px rgba(0,0,0,0.12);
+  --blur: 14px;
+
+  /* bordes */
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  /* transiciones */
+  --t: .25s ease;
+  --t-fast: .15s ease;
+}
+
+/* 🌙 Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f8f8f8;
+    --text-soft: #e2e2e2;
+    --text-muted: #c8c8c8;
+
+    --bg: #0d0d0f;
+    --bg-secondary: rgba(30,30,35,0.85);
+    --card: rgba(30,30,35,0.55);
+    --border: rgba(255,255,255,0.14);
+
+    --accent: #4d8bff;
+    --accent-soft: rgba(77,139,255,0.1);
+
+    --shadow: 0 4px 18px rgba(0,0,0,0.45);
+    --shadow-hover: 0 8px 28px rgba(0,0,0,0.55);
+  }
+}
+
+:root {
+  /* Colores principales */
+  --bg: #eef0f3;
+  --bg-secondary: #ffffff;
+  --card: rgba(255, 255, 255, .58);
+  --card-strong: #ffffff;
+  --border: rgba(0,0,0,.08);
+  --text: #1d1d1f;
+  --text-soft: #555;
+  --accent: #0d62ff;
+  --accent-soft: #e3edff;
+
+  /* Estado */
+  --success: #30c88b;
+  --error: #ff4757;
+  --warning: #ffbe0b;
+
+  /* Efectos */
+  --blur: 18px;
+  --radius: 18px;
+  --radius-sm: 10px;
+  --shadow: 0 5px 25px rgba(0,0,0,.08);
+  --shadow-hover: 0 7px 40px rgba(0,0,0,.12);
+
+  /* Transiciones */
+  --t: .22s cubic-bezier(.3, .25, .1, .95);
+  --t-fast: .18s ease;
+}
+
+/* ---------------------------------------------------------
+   DARK MODE
+---------------------------------------------------------- */
+html.dark {
+  --bg: #0f0f10;
+  --bg-secondary: #17181a;
+  --card: rgba(25,25,28,.55);
+  --card-strong: #1d1d20;
+  --border: rgba(255,255,255,.08);
+  --text: #fafafa;
+  --text-soft: #b7b7b7;
+  --accent-soft: #192c4f;
+  --shadow: 0 5px 25px rgba(0,0,0,.4);
+}
+
+/* ---------------------------------------------------------
+   BASE
+---------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--t), color var(--t);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* ---------------------------------------------------------
+   TOPBAR
+---------------------------------------------------------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-secondary);
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(9px);
+}
+
+.logo {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+/* NAV */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* SEARCH */
+.search-wrap input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  width: 260px;
+  font-size: .9rem;
+  transition: var(--t);
+}
+
+.search-wrap input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* SELECTS */
+.selects {
+  display: flex;
+  gap: 8px;
+}
+
+.selects select {
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  font-size: .88rem;
+  transition: var(--t);
+}
+
+.selects select:hover {
+  border-color: var(--accent);
+}
+
+/* TOPBAR BUTTONS */
+.btn-nav {
+  background: transparent;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: .9rem;
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  transition: var(--t);
+}
+
+.btn-nav:hover {
+  background: var(--accent-soft);
+}
+
+.btn-nav.danger {
+  color: var(--error);
+}
+
+/* ---------------------------------------------------------
+   LAYOUT GENERAL
+---------------------------------------------------------- */
+.container {
+  display: grid;
+  grid-template-columns: 290px 1fr 290px;
+  padding: 18px 26px;
+  gap: 26px;
+}
+
+/* ---------------------------------------------------------
+   LEFT PANE
+---------------------------------------------------------- */
+.left-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  height: fit-content;
+}
+
+/* ---------------------------------------------------------
+   CREATE POST BOX
+---------------------------------------------------------- */
+.create-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--border);
+}
+
+.create-box h3 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* TOOLBAR */
+.editor-toolbar {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.editor-toolbar button {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.editor-toolbar button:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* RICH EDITOR */
+.editor {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  min-height: 120px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+  font-size: .92rem;
+  line-height: 1.45;
+  transition: var(--t);
+}
+
+.editor:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* FILE INPUT */
+.file-row {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-row input {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* BUTTONS */
+.row.actions-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: var(--t);
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #004de5;
+  transform: translateY(-2px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------
+   PROFILE PREVIEW
+---------------------------------------------------------- */
+.profile-preview {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+}
+
+.pv {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.pv img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------------------
+   SAVED SECTION
+---------------------------------------------------------- */
+.saved-section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+}
+
+.saved-list {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.saved-list li {
+  cursor: pointer;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: var(--t);
+}
+
+.saved-list li:hover {
+  background: var(--accent-soft);
+}
+
+/* ---------------------------------------------------------
+   FEED — PUBLICACIONES
+---------------------------------------------------------- */
+.feed {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.post {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+  transition: var(--t);
+}
+
+.post:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* HEADER */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-header img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-header .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-header .info .user {
+  font-weight: 700;
+}
+
+.post-header .info .time {
+  font-size: .8rem;
+  color: var(--text-soft);
+}
+
+/* POST TEXT */
+.post-content {
+  margin-top: 12px;
+  font-size: .96rem;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------
+   POST IMAGES — GRID INTELIGENTE
+---------------------------------------------------------- */
+.post-images {
+  display: grid;
+  gap: 6px;
+  margin-top: 14px;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.post-images.cols-1 {
+  grid-template-columns: 1fr;
+}
+
+.post-images.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.post-images.cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.post-images.cols-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* HOVER FULLSCREEN PREVIEW */
+.post-images img {
+  cursor: zoom-in;
+  transition: .25s ease;
+}
+
+.post-images img:hover {
+  transform: scale(1.03);
+}
+
+/* ---------------------------------------------------------
+   POST ACTIONS
+---------------------------------------------------------- */
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  margin-top: 14px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: var(--t-fast);
+  color: var(--text-soft);
+}
+
+.action-btn:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.action-btn.liked {
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------
+   RIGHT PANE
+---------------------------------------------------------- */
+.right-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  height: fit-content;
+}
+
+.right-pane section {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+}
+
+/* ---------------------------------------------------------
+   TENDENCIAS
+---------------------------------------------------------- */
+#trendingList li {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--t);
+}
+
+#trendingList li:hover {
+  background: var(--accent-soft);
+}
+
+/* ---------------------------------------------------------
+   NOTAS
+---------------------------------------------------------- */
+#notesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#addNoteBtn {
+  margin-top: 10px;
+}
+
+/* ---------------------------------------------------------
+   MODAL FULLSCREEN IMG
+---------------------------------------------------------- */
+#imgFullscreen {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  backdrop-filter: blur(12px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#imgFullscreen img {
+  max-width: 88%;
+  max-height: 88%;
+  border-radius: var(--radius);
+}
+
+/* ---------------------------------------------------------
+   MODALS GENERALES
+---------------------------------------------------------- */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  opacity: 1;
+  transition: var(--t);
+}
+
+.modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-content {
+  background: var(--bg-secondary);
+  padding: 25px;
+  border-radius: var(--radius);
+  width: 440px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---------------------------------------------------------
+   TOAST
+---------------------------------------------------------- */
+.toast {
+  position: fixed;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-strong);
+  color: var(--text);
+  padding: 12px 22px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t);
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------
+   SKELETON LOADING
+---------------------------------------------------------- */
+.skeleton {
+  background: linear-gradient(90deg, #ddd, #eee, #ddd);
+  background-size: 200%;
+  animation: shimmer 1.2s infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+---------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .container {
+    grid-template-columns: 260px 1fr;
+  }
+  .right-pane {
+    display: none;
+  }
+}
+
+@media (max-width: 850px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+  .left-pane {
+    order: 2;
+  }
+  .feed {
+    order: 1;
+  }
+}
+
+/* ---------------------------------------------------------
+   HISTORIAS (NUEVO)
+---------------------------------------------------------- */
+.stories-strip {
+  display: flex;
+  gap: 12px;
+  padding: 10px;
+  overflow-x: auto;
+}
+
+.story {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.story:hover {
+  transform: scale(1.05);
+}
+
+/* ---------------------------------------------------------
+   CHAT (ESTILOS BASE)
+---------------------------------------------------------- */
+.chat-box {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+.chat-msg {
+  padding: 10px 14px;
+  margin: 6px 0;
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  max-width: 60%;
+}
+
+.chat-msg.me {
+  margin-left: auto;
+  background: var(--accent-soft);
+}
+
+/* ---------------------------------------------------------
+   FIN DEL CSS (ULTRA EDITION)
+---------------------------------------------------------- */
+/* ---------------------------------------------------------
+   PUBLICACIONES — ULTRA PRO V6 (CSS adicional)
+   Añade: reader-overlay, collections menu, reactions anim, mini-stats,
+   author-modal, ui-fade-in, accessible focus, reaction badges, etc.
+---------------------------------------------------------- */
+
+/* ---------------------------
+   UTILIDADES & ANIMACIONES
+--------------------------- */
+.ui-fade-in { animation: uiFadeIn .42s var(--t) both; }
+@keyframes uiFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.focus-ring:focus {
+  outline: 3px solid rgba(13,98,255,0.12);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+/* subtle press */
+.btn-press {
+  transition: transform var(--t-fast);
+}
+.btn-press:active { transform: translateY(1px) scale(.997); }
+
+/* small rounded badges */
+.count-badge, .reaction-count {
+  display:inline-block;
+  min-width:18px;
+  height:18px;
+  padding:0 6px;
+  border-radius:999px;
+  font-size:.78rem;
+  line-height:18px;
+  text-align:center;
+  background: #ddd(255, 255, 255, 0.06);
+  color: var(--text);
+}
+
+/* ---------------------------
+   REACTIONS (micro-interactions)
+--------------------------- */
+.reaction-btn {
+  position: relative;
+  transition: transform .12s ease, box-shadow .12s ease;
+  will-change: transform;
+}
+.reaction-btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 18px rgba(13,98,255,0.06); }
+.reaction-btn:active { transform: translateY(0) scale(0.98); }
+
+/* pulse when pressed */
+.reaction-btn.pulse::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 12px;
+  background: radial-gradient(circle at center, rgba(58,123,252,0.12), transparent 40%);
+  animation: reactionPulse .6s ease-out;
+  pointer-events: none;
+}
+@keyframes reactionPulse {
+  from { opacity: .9; transform: scale(.9); }
+  to   { opacity: 0; transform: scale(1.6); }
+}
+
+/* floating reaction palette (if later added) */
+.reaction-palette {
+  position: absolute;
+  bottom: 46px;
+  left: 50%;
+  transform: translateX(-50%);
+  display:flex;
+  gap:8px;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding:6px;
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--border);
+}
+
+/* ---------------------------
+   MINI-STATS
+--------------------------- */
+.mini-stats {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  margin-top:8px;
+  color:var(--text-soft);
+  font-size: .78rem;
+}
+.mini-stats svg { opacity:.95; display:block; }
+.mini-stats small { color:var(--text-soft); }
+
+/* ---------------------------
+   READER (MODO LECTURA) overlay
+--------------------------- */
+.reader-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,10,12,0.6), rgba(8,10,12,0.75));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index: 1100;
+  padding: 26px;
+}
+.reader-inner {
+  background: linear-gradient(180deg, var(--bg-secondary), var(--card-strong));
+  width: min(980px, 96%);
+  max-height: 92vh;
+  overflow:auto;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow-hover);
+  border: 1px solid var(--border);
+  animation: readerOpen .26s cubic-bezier(.2,.95,.2,1);
+}
+@keyframes readerOpen {
+  from { opacity:0; transform: translateY(8px) scale(.995); }
+  to { opacity:1; transform: translateY(0) scale(1); }
+}
+.close-reader {
+  position:absolute;
+  right:18px; top:18px;
+  background: transparent;
+  border: none;
+  font-size:1.2rem;
+  color:var(--text);
+  cursor:pointer;
+}
+.reader-inner header {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:12px;
+}
+.reader-avatar {
+  width:56px; height:56px; border-radius:12px; object-fit:cover;
+  border:2px solid var(--accent);
+}
+.reader-content {
+  font-size:1.05rem; line-height:1.7;
+  color:var(--text);
+  margin: 14px 0;
+}
+.reader-imgs { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+.reader-imgs img { width: 220px; border-radius:12px; object-fit:cover; }
+
+/* reader footer actions */
+.reader-inner footer { display:flex; gap:8px; align-items:center; justify-content:flex-start; margin-top:14px; }
+
+/* ---------------------------
+   COLLECTIONS MENU (Guardar en colecciones)
+--------------------------- */
+.collections-menu {
+  position: fixed;
+  right: 18px;
+  top: 80px;
+  width: 320px;
+  max-width: calc(100% - 36px);
+  z-index: 1200;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  box-shadow: var(--shadow-hover);
+  padding: 12px;
+  transition: transform .18s ease, opacity .18s ease;
+}
+.collections-menu.hidden { transform: translateY(-6px); opacity: 0; pointer-events:none; }
+.collections-menu:not(.hidden) { transform: translateY(0); opacity: 1; pointer-events:auto; }
+.collections-menu .collections-inner { display:flex; flex-direction:column; gap:10px; }
+.collections-menu h4 { margin:0 0 6px 0; font-size:1rem; color:var(--text); }
+#collectionsList { display:flex; flex-direction:column; gap:8px; max-height:200px; overflow:auto; padding-right:6px; }
+.collection-row { display:flex; justify-content:space-between; align-items:center; gap:8px; padding:8px; border-radius:10px; background: var(--bg); border:1px solid var(--border); }
+.collection-row button { border:none; background:transparent; padding:6px 10px; border-radius:8px; cursor:pointer; transition: var(--t-fast); }
+.collection-row button:hover { background:var(--accent-soft); color:var(--accent); }
+
+/* new collection input */
+.collections-new { display:flex; gap:8px; align-items:center; }
+#newCollectionName { flex:1; padding:8px 10px; border-radius:8px; border:1px solid var(--border); background:var(--bg-secondary); }
+
+/* ---------------------------
+   AUTHOR MODAL
+--------------------------- */
+.author-modal .modal-content.small {
+  width: 360px;
+  padding: 16px;
+  text-align:center;
+}
+.author-modal .author-preview img { width:84px; height:84px; border-radius:12px; object-fit:cover; border: 3px solid var(--accent); margin-bottom:8px; }
+.author-modal .author-preview h3 { margin:8px 0 4px 0; font-size:1.05rem; }
+.author-modal .author-preview p { color:var(--text-soft); font-size:.9rem; margin-bottom:12px; }
+
+/* ---------------------------
+   ACCESSIBLE MENU & OPTIONS (post-menu)
+--------------------------- */
+.post-menu { display:none; position:absolute; right:10px; top:36px; background:var(--bg-secondary); border-radius:10px; border:1px solid var(--border); box-shadow:var(--shadow-hover); padding:8px; min-width:120px; z-index:900; }
+.post-menu button { display:block; width:100%; text-align:left; padding:6px 10px; background:transparent; border:none; cursor:pointer; border-radius:6px; }
+.post-menu button:hover { background:var(--accent-soft); color:var(--accent); }
+
+/* ensure targetable area for btn-options */
+.btn-options { background: transparent; border: none; padding: 6px 8px; cursor:pointer; }
+
+/* ---------------------------
+   IMAGE FULLSCREEN (zoom) accessible
+--------------------------- */
+#imgFullscreen { display:flex; align-items:center; justify-content:center; }
+#imgFullscreen.show { display:flex; animation: imgFullIn .2s ease; }
+@keyframes imgFullIn { from { opacity:0; transform: scale(.98); } to { opacity:1; transform: scale(1); } }
+
+/* clicking image cursor */
+.post-media img { cursor: zoom-in; border-radius: 10px; }
+
+/* ---------------------------
+   SKELETON & LOADER tweaks
+--------------------------- */
+.infinite-loader {
+  text-align:center;
+  padding: 12px;
+  color: var(--text-soft);
+}
+
+/* ---------------------------
+   POST FOOTER & ENGAGEMENT
+--------------------------- */
+.post-footer {
+  margin-top:12px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  color:var(--text-soft);
+  font-size:.9rem;
+}
+.post-engagement small { color:var(--text-soft); }
+
+/* ---------------------------
+   RESPONSIVE tweaks for new UI
+--------------------------- */
+@media (max-width: 1100px) {
+  .collections-menu { right: 12px; width: 280px; top: 100px; }
+  .reader-inner { width: 92%; padding: 16px; }
+}
+@media (max-width: 700px) {
+  .collections-menu { position: fixed; left: 8px; right: 8px; top: auto; bottom: 12px; width: auto; }
+  .reader-avatar { display:none; }
+}
+
+/* ---------------------------
+   FORM CONTROLS & ACCESSIBILITY
+--------------------------- */
+input, select, textarea, button {
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+button { cursor: pointer; }
+
+/* keyboard focus styles */
+button:focus, input:focus, textarea:focus {
+  box-shadow: 0 6px 20px rgba(13,98,255,0.08);
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ---------------------------
+   NOTIFICATIONS (toasts)
+--------------------------- */
+.toast { transition: transform .22s cubic-bezier(.2,.9,.25,1), opacity .22s; transform-origin:center bottom; }
+.toast.show { transform: translateY(-6px); opacity:1; pointer-events:auto; }
+
+/* ---------------------------
+   EXTRA: small badges for reaction totals
+--------------------------- */
+.reaction-summary {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.reaction-summary .badge {
+  background: linear-gradient(180deg,#fff,#f6f9ff);
+  border-radius:999px;
+  padding:6px 8px;
+  border:1px solid var(--border);
+  font-size:.85rem;
+}
+
+/* ---------------------------
+   UTILITY: hidden for aria-hidden elements
+--------------------------- */
+.hidden { display:none !important; }
+
+/* ---------------------------
+   END OF ULTRA PRO V6 ADDITIONS
+--------------------------- */
+/* ===== Integración visual con global.css + layout botones ===== */
+
+/* ensure post container relative for absolute controls */
+.post { position: relative; overflow: visible; }
+
+/* header avatar small tweak */
+.post .post-avatar {
+  width:48px; height:48px; border-radius:50%; object-fit:cover;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 18px rgba(2,119,189,0.12);
+}
+
+/* three-dots button (options) top-right */
+.post .btn-options {
+  background: transparent;
+  border: none;
+  font-size: 1.05rem;
+  color: var(--text);
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background .18s, transform .12s;
+}
+.post .btn-options:hover { background: var(--accent-soft); transform: translateY(-2px); color: var(--accent-dark); }
+
+/* place options button absolute top-right (already inline in render but strengthen here) */
+.post .post-header { position: relative; padding-right: 44px; }
+.post .post-header .btn-options { position: absolute; right: 12px; top: 12px; }
+
+/* footer actions aligned left, horizontal (acostados) */
+.post .post-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; padding-top:12px; margin-top:14px; border-top:1px solid var(--border); }
+.post .post-actions-left { display:flex; align-items:center; gap:8px; }
+
+/* action buttons styled like global buttons but small */
+.post .action-btn {
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  color: white;
+  padding:8px 10px;
+  border-radius: 12px;
+  border: none;
+  font-weight:600;
+  box-shadow: 0 10px 20px rgba(2,119,189,0.12);
+}
+.post .action-btn.btn-ghost {
+  background:transparent; color:var(--text); border:1px solid var(--border); box-shadow:none;
+}
+.post .action-btn:hover { transform: translateY(-2px); }
+
+/* smaller text badges */
+.post .count { margin-left:6px; font-size:.92rem; color:inherit; background:transparent; padding:0; }
+
+/* make save/bookmark and read smaller & ghost */
+.post .btn-save { background:transparent; border:1px solid rgba(255,255,255,0.06); color:var(--text); padding:8px 10px; border-radius:10px; }
+.post .btn-read { background:transparent; border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:8px 10px; }
+
+/* engagement right side (mini-stats) */
+.post .post-engagement { color:var(--text-soft); font-size:.86rem; }
+
+/* image grid small spacing */
+.post .post-images img { border-radius:12px; object-fit:cover; height:140px; width:100%; }
+
+/* responsiveness adjustments */
+@media (max-width:700px) {
+  .post .post-images img { height:160px; }
+  .post .btn-options { right:8px; top:8px; }
+  .post .action-btn { padding:8px 10px; }
+}
+
+/* ensure .toast inherits global look */
+#toast { background: linear-gradient(90deg,var(--accent),var(--accent-dark)); color:#fff; box-shadow:0 12px 28px rgba(2,119,189,0.18); border-radius:14px; padding:10px 16px; }
+
+/* small improvement: better contrast for .post card when using global background */
+.post {
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.72));
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.28);
+}
+
+/* dark-mode tweaks */
+html.dark .post .action-btn { color: white; }
+html.dark .post { background: linear-gradient(180deg, rgba(20,20,22,0.6), rgba(18,18,20,0.48)); border: 1px solid rgba(255,255,255,0.03); }
+/* ---------------------------------------------------------
+   CONTINUACIÓN ULTRA PRO V6 — REACTIONS
+---------------------------------------------------------- */
+
+@keyframes reactionPulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1.15); opacity: 0.25; }
+  100% { transform: scale(1.0); opacity: 0; }
+}
+
+/* efecto sparkle al dar like */
+.reaction-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkFly .55s ease-out forwards;
+}
+
+@keyframes sparkFly {
+  from { opacity: 1; transform: translate(0,0) scale(1); }
+  to {
+    opacity: 0;
+    transform: translate(
+      calc(var(--dx) * 1px),
+      calc(var(--dy) * 1px)
+    ) scale(0.2);
+  }
+}
+
+/* ---------------------------------------------------------
+   MINI STATS — indicadores bajo cada post
+---------------------------------------------------------- */
+.post-mini-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  font-size: .78rem;
+  color: var(--text-soft);
+}
+
+.post-mini-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ---------------------------------------------------------
+   COLLECTIONS MENU — Guardar publicaciones
+---------------------------------------------------------- */
+.collections-menu {
+  position: absolute;
+  right: 16px;
+  top: 40px;
+  background: var(--bg-secondary);
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-hover);
+  width: 200px;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: var(--t);
+  z-index: 40;
+}
+
+.collections-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.collections-menu h4 {
+  font-size: .9rem;
+  margin-bottom: 8px;
+}
+
+.collections-menu li {
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.collections-menu li:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------
+   READER OVERLAY — tipo “Modo lectura”
+---------------------------------------------------------- */
+.reader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  backdrop-filter: blur(14px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.reader-overlay.active {
+  display: flex;
+  animation: uiFadeIn .45s ease both;
+}
+
+.reader-box {
+  width: 70%;
+  max-height: 82vh;
+  overflow-y: auto;
+  padding: 28px;
+  border-radius: var(--radius);
+  background: var(--card-strong);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-hover);
+}
+
+.reader-box h2 {
+  margin-bottom: 12px;
+}
+
+.reader-close {
+  position: absolute;
+  top: 26px;
+  right: 32px;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #fff;
+  opacity: .9;
+  transition: var(--t);
+}
+.reader-close:hover { opacity: 1; }
+
+/* ---------------------------------------------------------
+   AUTHOR MODAL — información del autor
+---------------------------------------------------------- */
+.author-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(14px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.author-modal.active {
+  display: flex;
+}
+
+.author-card {
+  background: var(--bg-secondary);
+  width: 440px;
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-hover);
+}
+
+.author-card .header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.author-card .header img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.author-card .bio {
+  margin-top: 14px;
+  font-size: .9rem;
+  color: var(--text-soft);
+}
+
+/* ---------------------------------------------------------
+   SHARE MENU — animación radial
+---------------------------------------------------------- */
+.share-menu {
+  position: absolute;
+  bottom: 56px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: var(--t);
+}
+
+.share-menu.show {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.share-menu button {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.share-menu button:hover {
+  background: #004de5;
+  transform: scale(1.08);
+}
+
+/* ---------------------------------------------------------
+   COMMENT SYSTEM — nuevo diseño avanzado
+---------------------------------------------------------- */
+.comment-box {
+  margin-top: 18px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+}
+
+.comment-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  resize: none;
+  font-size: .9rem;
+  color: var(--text);
+}
+
+.comment-input:focus {
+  outline: none;
+}
+
+.comment-actions {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-send {
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.comment-send:hover {
+  background: #004de5;
+}
+
+.comment-list {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 12px;
+}
+
+.comment-item img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+
+.comment-bubble {
+  background: var(--card);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+}
+
+.comment-bubble .name {
+  font-weight: 700;
+  font-size: .87rem;
+}
+
+.comment-bubble .text {
+  font-size: .88rem;
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------
+   NOTIFICATIONS PANEL — tipo Instagram
+---------------------------------------------------------- */
+.notifications-panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 340px;
+  height: 100vh;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  box-shadow: -5px 0 20px rgba(0,0,0,.1);
+  transform: translateX(100%);
+  transition: var(--t);
+  z-index: 900;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.notifications-panel.open {
+  transform: translateX(0);
+}
+
+.notification-item {
+  padding: 12px;
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--t);
+}
+
+.notification-item:hover {
+  background: var(--accent-soft);
+}
+
+.notification-item img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+/* ---------------------------------------------------------
+   FLOATING CREATE BUTTON — estilo App móvil
+---------------------------------------------------------- */
+.fab-create {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: var(--shadow-hover);
+  border: none;
+  font-size: 1.8rem;
+  transition: var(--t);
+  z-index: 500;
+}
+
+.fab-create:hover {
+  transform: scale(1.05);
+  background: #004de5;
+}
+
+/* ---------------------------------------------------------
+   EMPTY STATES — pantallas vacías animadas
+---------------------------------------------------------- */
+.empty-state {
+  padding: 40px;
+  text-align: center;
+  color: var(--text-soft);
+  animation: uiFadeIn .4s ease both;
+}
+
+.empty-state img {
+  width: 120px;
+  opacity: 0.8;
+}
+
+.empty-state h3 {
+  margin-top: 12px;
+  font-size: 1.2rem;
+}
+
+.empty-state p {
+  font-size: .9rem;
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------
+   FINAL ULTRA PRO V6.3 — más limpio, más moderno
+---------------------------------------------------------- */
+.post-reactions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.react-btn {
+  font-size: 18px;
+  padding: 4px 8px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.react-btn .count {
+  margin-left: 4px;
+  font-weight: bold;
+}
+
+.react-btn.active {
+  transform: scale(1.1);
+}
+/* ---------------------------------------------------------
+   REACTIONS — Nuevo diseño elegante + Glass UI
+---------------------------------------------------------- */
+
+/* Contenedor general de reacciones debajo del post */
+.post-reactions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  align-items: center;
+}
+
+/* Botón individual */
+.react-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: .88rem;
+  color: var(--text-soft);
+  transition: var(--t-fast);
+  backdrop-filter: blur(12px);
+}
+
+.react-btn:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Cuando está activo (like/apoyado) */
+.react-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(13,98,255,0.26);
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------
+   AVATAR DEL POST — actualizado estilo Instagram/X
+---------------------------------------------------------- */
+.post-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  transition: var(--t-fast);
+}
+
+.post-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(13,98,255,0.2);
+}
+
+/* ---------------------------------------------------------
+   GLASS CARD — tarjetas flotantes en Glass UI
+---------------------------------------------------------- */
+.glass-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(var(--blur));
+  transition: var(--t);
+}
+
+.glass-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------
+   READER OVERLAY — modo lectura fullscreen
+---------------------------------------------------------- */
+#readerOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(18px);
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 32px;
+  z-index: 1500;
+  animation: readerFade .3s ease;
+}
+
+@keyframes readerFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+select,
+select option {
+  color: #111 !important;           /* Texto oscuro siempre visible */
+  font-weight: 500;
+}
+
+select option:hover,
+select option:focus {
+  background: #dbe8ff !important;   /* Fondo visible al seleccionar */
+  color: #f3ebeb !important;
+}
+/* --- SELECT PRINCIPAL --- */
+select {
+  background: #f7f7fa !important;     /* fondo claro */
+  color: #333 !important;              /* texto oscuro */
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* --- OPCIONES DEL MENÚ (claro) --- */
+select option {
+  background: #f2f2f5 !important;      /* gris claro */
+  color: #333 !important;              /* texto oscuro */
+  padding: 10px;
+}
+
+/* --- HOVER DE OPCIÓN (azul suave) --- */
+select option:hover {
+  background: #e1e9ff !important;      /* azul suave */
+  color: #000 !important;
+}
+
+/* --- OPCIÓN SELECCIONADA (azul claro) --- */
+select option:checked,
+select option:focus {
+  background: #bcd0ff !important;      /* azul clarito */
+  color: #000 !important;
+}
+/* --- CONTENEDOR PRINCIPAL DE CREAR PUBLICACIÓN --- */
+.crear-publicacion {
+  background: #ffffff;
+  border: 1px solid #e8e8ee;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  width: 100%;
+}
+
+/* --- TÍTULO DEL FORMULARIO --- */
+.crear-publicacion h2 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* --- INPUTS GENERALES (texto, archivo, etc) --- */
+.crear-publicacion input[type="text"],
+.crear-publicacion input[type="file"],
+.crear-publicacion textarea,
+.crear-publicacion select {
+  width: 100%;
+  background: #f7f7fa !important;
+  color: #333 !important;
+  border: 1px solid #ccc;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  transition: 0.2s;
+}
+
+/* --- FOCUS (cuando das click) --- */
+.crear-publicacion input:focus,
+.crear-publicacion textarea:focus,
+.crear-publicacion select:focus {
+  border-color: #6b8eff;
+  background: #eef2ff !important;
+  box-shadow: 0 0 0 3px rgba(140, 164, 255, 0.3);
+}
+
+/* --- SELECT Y OPCIONES (TONO CLARO) --- */
+.crear-publicacion select option {
+  background: #f2f2f5 !important;
+  color: #333 !important;
+}
+
+.crear-publicacion select option:hover {
+  background: #e1e9ff !important;
+  color: #000 !important;
+}
+
+.crear-publicacion select option:checked {
+  background: #bcd0ff !important;
+  color: #000 !important;
+}
+
+/* --- TEXTAREA (contenido publicación) --- */
+.crear-publicacion textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* --- BOTÓN DE PUBLICAR --- */
+.crear-publicacion button {
+  width: 100%;
+  background: #6b8eff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.crear-publicacion button:hover {
+  background: #506fe0;
+  transform: translateY(-2px);
+}
+
+/* --- PREVISUALIZACIÓN DE IMAGEN --- */
+.preview-img {
+  width: 100%;
+  max-height: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}

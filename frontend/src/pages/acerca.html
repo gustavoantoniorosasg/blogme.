@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Acerca – BlogMe</title>
+
+    <link rel="stylesheet" href="../styles/acerca.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ROMBOS FONDO -->
+    <div class="rombo r1"></div>
+    <div class="rombo r2"></div>
+    <div class="rombo r3"></div>
+
+    <!-- Topbar -->
+    <header class="topbar">
+        <h1>ℹ️ Acerca de BlogMe</h1>
+
+        <nav>
+            <a href="./landing.html" class="btn-nav"><i class="fa-solid fa-house"></i> Inicio</a>
+            <a href="./explorar.html" class="btn-nav"><i class="fa-solid fa-compass"></i> Explorar</a>
+            <a href="./ayuda.html" class="btn-nav"><i class="fa-solid fa-question-circle"></i> Ayuda</a>
+        </nav>
+
+        <button id="darkToggle" class="dark-btn">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h2>Bienvenido a <span>BlogMe</span></h2>
+        <p>Una plataforma creada para que crees, compartas y descubras contenido de forma simple y segura.</p>
+    </section>
+
+    <!-- Historia / misión / visión -->
+    <section class="about-section">
+        <div class="about-grid">
+            <div class="about-card">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Misión</h4>
+                <p>Facilitar una plataforma abierta y moderna para que creadores compartan ideas y crezcan.</p>
+            </div>
+
+            <div class="about-card">
+                <i class="fa-solid fa-eye"></i>
+                <h4>Visión</h4>
+                <p>Ser el lugar de referencia para microblogs, artículos y comunidades de nicho.</p>
+            </div>
+
+            <div class="about-card">
+                <i class="fa-solid fa-handshake"></i>
+                <h4>Valores</h4>
+                <p>Transparencia, seguridad, rapidez y respeto por la comunidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipo -->
+    <section class="team-section">
+        <h3>👥 Nuestro equipo</h3>
+
+        <div class="team-grid">
+            <div class="member">
+                <img src="../assets/team1.jpg" alt="Miembro 1" onerror="this.style.display='none'">
+                <h4>Gustav O.</h4>
+                <p>Fundador & Desarrollador</p>
+            </div>
+
+            <div class="member">
+                <img src="../assets/team2.jpg" alt="Miembro 2" onerror="this.style.display='none'">
+                <h4>María P.</h4>
+                <p>Diseño UX/UI</p>
+            </div>
+
+            <div class="member">
+                <img src="../assets/team3.jpg" alt="Miembro 3" onerror="this.style.display='none'">
+                <h4>Soporte</h4>
+                <p>Community & Soporte</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cronología / hitos -->
+    <section class="timeline">
+        <h3>📅 Hitos</h3>
+
+        <ul>
+            <li><strong>2023</strong> — Idea inicial y primeros prototipos.</li>
+            <li><strong>2024</strong> — Lanzamiento beta y mejoras UI.</li>
+            <li><strong>2025</strong> — Expansión de funciones: etiquetas, roles y estadísticas.</li>
+        </ul>
+    </section>
+
+    <!-- CTA / Donaciones / Contribuir -->
+    <section class="cta">
+        <h3>¿Quieres contribuir?</h3>
+        <p>Contribuye al proyecto con feedback, código o apoyando económicamente.</p>
+        <div class="cta-actions">
+            <a href="#" class="btn-primary">Ver repo</a>
+            <a href="#" class="btn-outline">Contactar al equipo</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 BlogMe — Hecho con ♥</p>
+    </footer>
+
+    <script src="../js/acerca.js"></script>
+    <script>
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+            document.body.style.transition = "opacity .5s";
+            document.body.style.opacity = "1";
+        }, 50);
+    </script>
+</body>
+</html>

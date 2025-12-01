@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BlogMe | Perfil</title>
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/perfil.css">
+  <link rel="stylesheet" href="../styles/comments.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="left">
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Blog_%281%29.jpg" alt="logo" />
+        <span>Blog<span>Me</span></span>
+      </div>
+    </div>
+    <div class="right">
+      <div class="user-badge">
+        <img id="topAvatar" src="../../public/images/decoraciones/avatar-placeholder.png" alt="avatar">
+        <div class="user-info">
+          <strong id="topName">Invitado</strong>
+          <small id="topNotesCount">0 notas</small>
+        </div>
+        <button id="goFeed" class="btn-small"><i class="fa-solid fa-house"></i> Feed</button>
+        <button id="logoutBtn" class="btn-small alt"><i class="fa-solid fa-right-from-bracket"></i> Salir</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main profile -->
+  <main class="profile-container">
+    <!-- Profile card -->
+    <section class="profile-card glass">
+      <div class="cover"></div>
+      <div class="profile-row">
+        <div class="avatar-wrapper">
+          <img id="profileAvatar" class="pf-avatar" src="../../public/images/decoraciones/avatar-placeholder.png" alt="avatar">
+          <input type="file" id="avatarUpload" accept="image/*" hidden>
+          <button class="btn-upload" title="Cambiar avatar"><i class="fa-solid fa-camera"></i></button>
+        </div>
+        <div class="pf-info">
+          <h2 id="profileName">Invitado</h2>
+          <p id="profileBio">Sin bio — ¡edítala!</p>
+          <div class="pf-actions">
+            <button id="editProfileBtn" class="btn-primary"><i class="fa-solid fa-pen"></i> Editar perfil</button>
+            <button id="addNoteBtnProfile" class="btn-ghost"><i class="fa-solid fa-plus"></i> Nueva nota</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-stats">
+        <div><strong id="postsCount">0</strong><span>Publicaciones</span></div>
+        <div><strong id="notesCount">0</strong><span>Notas</span></div>
+      </div>
+
+      <div class="profile-notes">
+        <h3>Notas</h3>
+        <div id="profileNotesList"></div>
+      </div>
+    </section>
+
+    <!-- Profile feed -->
+    <section class="profile-feed glass">
+      <h3>Publicaciones compartidas</h3>
+      <div id="profilePosts" class="posts-grid"></div>
+    </section>
+  </main>
+
+  <!-- Modal editar perfil -->
+  <div id="profileModal" class="modal hidden">
+    <div class="modal-content glass">
+      <button class="close" id="closeProfile">✕</button>
+      <h3>Editar perfil</h3>
+      <label>Nombre</label>
+      <input id="profileNameInput" placeholder="Tu nombre visible">
+      <label>Bio</label>
+      <textarea id="profileBioInput" rows="3" placeholder="Escribe algo sobre ti..."></textarea>
+      <div class="modal-actions">
+        <button id="saveProfile" class="btn-primary">Guardar</button>
+        <button id="cancelProfile" class="btn-ghost">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- Scripts -->
+  <script src="../js/comments.js"></script>
+  <script src="../js/perfil.js"></script>
+</body>
+</html>

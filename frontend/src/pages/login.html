@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlogMe - Iniciar sesión</title>
+  <link rel="stylesheet" href="../styles/login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="animated-bg"></div>
+
+  <div class="login-container">
+    <h1 class="title">Blog<span>Me</span></h1>
+
+    <div class="tabs">
+      <button class="tab active" id="login-tab">Iniciar sesión</button>
+      <button class="tab" id="register-tab">Crear cuenta</button>
+    </div>
+
+    <!-- 🟢 FORMULARIO LOGIN -->
+    <form id="login-form" class="form active">
+      <input type="text" placeholder="Usuario" required autocomplete="username">
+      <input type="password" placeholder="Contraseña" required autocomplete="current-password">
+      <button type="submit" class="btn">Entrar</button>
+      <p class="link">¿Olvidaste tu contraseña?</p>
+      <p id="login-msg" class="msg"></p>
+    </form>
+
+<!-- 🟣 FORMULARIO REGISTRO -->
+<form id="register-form" class="form">
+  <input id="reg-username" type="text" placeholder="Nombre de usuario" required autocomplete="username">
+  <input id="reg-correo" type="email" placeholder="Correo electrónico" required autocomplete="email">
+  <input id="reg-password" type="password" placeholder="Contraseña" required autocomplete="new-password">
+  <button type="submit" class="btn">Registrarse</button>
+  <p id="register-msg" class="msg"></p>
+</form>
+
+
+  <script src="../js/login.js"></script>
+<script src="../js/registro.js"></script> <!-- ← añadir esto -->
+
+</body>
+</html>

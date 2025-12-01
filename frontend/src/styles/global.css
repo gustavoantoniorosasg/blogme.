@@ -1,0 +1,394 @@
+/* ============================================================
+   GLOBAL.CSS — SISTEMA DE ESTILOS AZUL CIELO
+   © 2025 BlogMe — para usar en TODOS los módulos
+   ============================================================ */
+
+/* -----------------------------
+   Tipografías y reset global
+------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+  margin:0; padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins", sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+html, body{
+  height:100%;
+}
+
+/* -----------------------------
+   PALETA DE COLORES BlogMe
+------------------------------ */
+:root{
+  --sky-1: #B3E5FC;          /* celeste claro */
+  --sky-2: #4FC3F7;          /* azul cielo */
+  --sky-3: #0288D1;          /* azul fuerte */
+  --deep:  #0D47A1;          /* azul oscuro profundo */
+
+  --accent: #29B6F6;         /* acento brillante */
+  --accent-dark: #0277BD;    /* acento más fuerte */
+
+  --white: #ffffff;
+  --black: #0b0f1c;
+  --muted: #9fb3c8;
+
+  --card-bg: rgba(255,255,255,0.95);
+  --glass: rgba(255,255,255,0.08);
+  --glass-2: rgba(255,255,255,0.18);
+
+  --shadow-blue: rgba(2,136,209,0.16);
+  --shadow-dark: rgba(0,0,0,0.25);
+}
+
+/* -----------------------------
+   FONDO GLOBAL DEL SITIO
+------------------------------ */
+body{
+  background: linear-gradient(135deg, var(--sky-1), var(--sky-2));
+  overflow-x:hidden;
+  color:var(--black);
+  position:relative;
+}
+
+/* contenedor general */
+.container-centered{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+}
+
+/* -----------------------------
+   ESTILOS DE BOTONES
+------------------------------ */
+.btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:40px;
+  cursor:pointer;
+  font-weight:600;
+  border:none;
+  transition: all .25s ease;
+  text-decoration:none;
+}
+
+.btn.solid{
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  color: var(--white);
+  box-shadow:0 12px 28px rgba(2,119,189,0.23);
+}
+
+.btn.solid:hover{
+  transform:translateY(-3px);
+  box-shadow:0 20px 38px rgba(2,119,189,0.26);
+}
+
+.btn.ghost{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.25);
+  color:var(--white);
+}
+
+.btn.ghost:hover{
+  background:rgba(255,255,255,0.18);
+  transform:translateY(-3px);
+}
+
+.btn.big{
+  padding:14px 32px;
+  font-size:1.05rem;
+}
+
+/* botones pequeños para paneles */
+.btn-small{
+  background:var(--accent-dark);
+  color:white;
+  padding:6px 14px;
+  border-radius:14px;
+  font-size:.78rem;
+  border:none;
+  cursor:pointer;
+  transition:background .2s;
+}
+.btn-small:hover{
+  background:#015A8D;
+}
+
+/* variante alternativa */
+.btn-small.alt{
+  background:#eceff1;
+  color:var(--deep);
+}
+.btn-small.alt:hover{
+  background:#d9e1e7;
+}
+
+/* -----------------------------
+   TARJETAS REUTILIZABLES
+------------------------------ */
+.card{
+  background:var(--card-bg);
+  padding:22px;
+  border-radius:22px;
+  box-shadow:0 14px 32px var(--shadow-blue);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 22px 48px rgba(0,0,0,0.14);
+}
+
+/* -----------------------------
+   TEXTO Y UTILIDADES
+------------------------------ */
+.text-muted{
+  color:var(--muted);
+}
+
+.soft-shadow{
+  box-shadow:0 10px 22px var(--shadow-blue);
+}
+
+.h-center{
+  text-align:center;
+}
+
+.flex{
+  display:flex;
+}
+
+.flex-between{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.flex-center{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* espaciados */
+.mt-1{ margin-top:10px; }
+.mt-2{ margin-top:20px; }
+.mt-3{ margin-top:30px; }
+.mb-1{ margin-bottom:10px; }
+.mb-2{ margin-bottom:20px; }
+.mb-3{ margin-bottom:30px; }
+
+/* -----------------------------
+   INPUTS GLOBALES
+------------------------------ */
+input, textarea, select{
+  border:none;
+  background:rgba(255,255,255,0.95);
+  padding:10px 14px;
+  border-radius:12px;
+  width:100%;
+  outline:none;
+  font-size:.95rem;
+  box-shadow:0 8px 16px rgba(2,119,189,0.15);
+  transition:all .2s ease;
+}
+
+input:focus, textarea:focus, select:focus{
+  box-shadow:0 12px 26px rgba(2,119,189,0.25);
+}
+
+/* -----------------------------
+   HEADER GLOBAL (NAVBAR)
+------------------------------ */
+.nav{
+  width:100%;
+  position:fixed;
+  top:0;
+  left:0;
+  padding:16px 0;
+  z-index:10;
+  background:rgba(255,255,255,0.07);
+  backdrop-filter:blur(14px);
+  box-shadow:0 8px 18px rgba(0,0,0,0.08);
+}
+
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  padding:0 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* Marca */
+.brand{
+  display:flex;
+  align-items:center;
+}
+.logo-img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  margin-right:10px;
+  box-shadow:0 5px 12px rgba(0,0,0,0.18);
+}
+
+/* texto BlogMe */
+.brand-txt strong{
+  font-size:1.4rem;
+  color:white;
+  letter-spacing:1px;
+}
+.brand-txt span{
+  color:var(--sky-1);
+}
+
+/* enlaces del nav */
+.nav-links{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+.nav-links a{
+  text-decoration:none;
+  color:white;
+  font-weight:500;
+  font-size:.95rem;
+  transition:color .25s ease, opacity .25s ease;
+}
+.nav-links a:hover{
+  opacity:.65;
+}
+
+/* -----------------------------
+   ROMBOS ANIMADOS DEL FONDO
+------------------------------ */
+.bg-shape{
+  position:fixed;
+  width:320px;
+  height:320px;
+  pointer-events:none;
+  z-index:-1;
+  transform:rotate(45deg);
+  opacity:.18;
+  filter:blur(1px);
+  transition:transform .3s cubic-bezier(.22,.61,.36,1);
+}
+
+/* tamaños */
+.bg-lg{ width:480px; height:480px; top:-150px; left:-150px; background:linear-gradient(135deg, var(--deep), var(--sky-3)); animation:floatLg 9s infinite alternate; }
+.bg-md{ width:340px; height:340px; bottom:-110px; right:-150px; background:linear-gradient(135deg, var(--sky-2), var(--sky-3)); animation:floatMd 11s infinite alternate; }
+.bg-sm{ width:200px; height:200px; top:25%; left:65%; background:linear-gradient(135deg, var(--white), rgba(2,136,209,0.15)); animation:floatSm 8s infinite alternate; }
+
+/* animaciones */
+@keyframes floatLg{
+  from{ transform:translateY(0) rotate(45deg); }
+  to{ transform:translateY(40px) rotate(45deg); }
+}
+@keyframes floatMd{
+  from{ transform:translateY(0) rotate(45deg); }
+  to{ transform:translateY(-32px) rotate(45deg); }
+}
+@keyframes floatSm{
+  from{ transform:translateY(0) rotate(45deg); }
+  to{ transform:translateY(26px) rotate(45deg); }
+}
+
+/* parallax en JS */
+.parallax{
+  transition: transform .25s cubic-bezier(.2,.9,.3,1);
+}
+
+/* -----------------------------
+   TOAST GLOBAL
+------------------------------ */
+.toast{
+  position:fixed;
+  bottom:32px;
+  right:32px;
+  padding:16px 20px;
+  background:var(--deep);
+  color:white;
+  font-weight:600;
+  border-radius:18px;
+  box-shadow:0 10px 22px rgba(0,0,0,0.26);
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .25s ease;
+  z-index:2000;
+}
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* -----------------------------
+   MODALES
+------------------------------ */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.42);
+  backdrop-filter:blur(5px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  z-index:1000;
+}
+
+.modal.hidden{
+  display:none;
+}
+
+.modal-content{
+  background:var(--card-bg);
+  padding:28px;
+  border-radius:18px;
+  width:100%;
+  max-width:520px;
+  animation:popIn .25s ease;
+  box-shadow:0 16px 38px rgba(0,0,0,0.26);
+  position:relative;
+}
+.modal-content.wide{
+  max-width:820px;
+}
+
+@keyframes popIn{
+  from{ transform:scale(.85); opacity:0; }
+  to{ transform:scale(1); opacity:1; }
+}
+
+/* botón cerrar modal */
+.modal .close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:#e0e0e0;
+  border:none;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.modal .close:hover{
+  background:#bdbdbd;
+}
+
+/* -----------------------------
+   RESPONSIVE
+------------------------------ */
+@media(max-width:980px){
+  .nav-inner{
+    padding:0 16px;
+  }
+}
+
+
+/* ===== Estilos Globales BlogMe ===== */

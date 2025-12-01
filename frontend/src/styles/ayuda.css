@@ -1,0 +1,76 @@
+/* Usa la misma paleta que explorar (ajusta si quieres un archivo base compartido) */
+:root {
+    --bg: #e9f0ff;
+    --text: #0d1b3a;
+    --primary: #0a4bff;
+    --primary-light: #c5d7ff;
+    --nav-bg: #ffffff;
+    --card-bg: #ffffff;
+    --shadow: rgba(0, 0, 0, 0.12);
+}
+
+body.dark {
+    --bg: #0d0f14;
+    --text: #fff;
+    --primary: #5a8cff;
+    --primary-light: #1c2333;
+    --nav-bg: #16181f;
+    --card-bg: #1e212a;
+    --shadow: rgba(255,255,255,0.04);
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    transition: 0.3s ease;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* rombos */
+.rombo { position:absolute; width:160px; height:160px; background:var(--primary-light); transform:rotate(45deg); filter:blur(6px); opacity:.32; z-index:-1; }
+.r1{ top:-50px; left:-30px; } .r2{ top:220px; right:-70px; } .r3{ bottom:-50px; left:45%; }
+
+/* topbar */
+.topbar { background:var(--nav-bg); padding:18px 30px; box-shadow:0 4px 10px var(--shadow); display:flex; align-items:center; justify-content:space-between; }
+.topbar h1 { color:var(--primary); font-size:22px; }
+.btn-nav { padding:8px 14px; border-radius:12px; background:var(--primary); color:#fff; text-decoration:none; transition:.25s; }
+.btn-nav:hover{ transform:translateY(-3px); }
+.dark-btn{ background:none; border:none; font-size:24px; cursor:pointer; color:var(--primary); }
+
+/* hero */
+.hero{ padding:60px 20px; text-align:center; }
+.hero span{ color:var(--primary); }
+
+/* search */
+.help-search{ padding:30px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.search-card{ display:flex; gap:8px; background:var(--card-bg); padding:8px; border-radius:14px; box-shadow:0 6px 14px var(--shadow); width:min(920px,95%); }
+.search-card input{ flex:1; border:0; outline:none; padding:12px; font-size:16px; background:transparent; color:inherit; }
+.search-card button{ background:var(--primary); color:#fff; padding:10px 14px; border-radius:10px; border:0; cursor:pointer; }
+.quick-links{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
+.quick{ background:transparent; border:1px solid var(--primary); color:var(--primary); padding:8px 12px; border-radius:10px; cursor:pointer; }
+
+/* faq */
+.faq-section{ padding:30px; }
+.faq-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
+.faq-item{ background:var(--card-bg); padding:18px; border-radius:14px; box-shadow:0 6px 14px var(--shadow); cursor:pointer; }
+.faq-item h4{ margin:0 0 8px; }
+.faq-answer{ max-height:0; overflow:hidden; transition:max-height .32s ease; color:var(--text); }
+
+/* resources */
+.resources{ padding:30px; }
+.resources-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+.res-card{ background:var(--card-bg); padding:20px; border-radius:14px; box-shadow:0 6px 14px var(--shadow); text-align:left; }
+.res-card i{ font-size:28px; color:var(--primary); margin-bottom:8px; display:inline-block; }
+
+/* contact */
+.contact-section{ padding:30px; }
+.support-form{ display:grid; gap:12px; width:min(820px,95%); margin:0 auto; }
+.support-form input, .support-form textarea, .support-form select{ padding:12px; border-radius:10px; border:1px solid rgba(0,0,0,0.06); background:transparent; color:inherit; outline:none; }
+.btn-submit{ background:var(--primary); color:#fff; padding:12px; border-radius:12px; border:none; cursor:pointer; }
+.form-msg{ font-size:0.95rem; margin-top:6px; color:green; }
+
+/* footer */
+footer{ margin-top:30px; text-align:center; padding:18px; background:var(--nav-bg); box-shadow:0 -3px 10px var(--shadow); }

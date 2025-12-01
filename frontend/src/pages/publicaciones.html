@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BlogMe | Publicaciones</title>
+
+  <!-- CSS PRINCIPAL -->
+  <link rel="stylesheet" href="../styles/publicaciones.css">
+  <link rel="stylesheet" href="../styles/comments.css">
+
+  <!-- ICONOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- DARK MODE AUTO -->
+  <meta name="color-scheme" content="light dark">
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <h1 class="logo">Blog<span>Me</span></h1>
+
+    <nav class="controls">
+      <div class="search-wrap">
+        <input id="buscar" placeholder="Buscar publicaciones, autores o texto..." autocomplete="off">
+      </div>
+
+      <div class="selects">
+        <select id="filterCategory">
+          <option value="">Todas las categorías</option>
+          <option value="Tecnología">Tecnología</option>
+          <option value="Noticias">Noticias</option>
+          <option value="Arte & Diseño">Arte & Diseño</option>
+          <option value="Viajes">Viajes</option>
+          <option value="Gastronomía">Gastronomía</option>
+          <option value="Personal">Personal</option>
+        </select>
+
+        <select id="sortBy">
+          <option value="recientes">Recientes</option>
+          <option value="populares">Más populares</option>
+          <option value="vistas">Más vistas</option>
+        </select>
+      </div>
+
+      <div class="nav-actions">
+        <button id="darkToggle" class="btn-nav" title="Tema">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <a class="btn-nav" href="./publicaciones.html">Inicio</a>
+        <a class="btn-nav" href="./perfil.html">Perfil</a>
+
+        <button id="logoutBtn" class="btn-nav danger">
+          Cerrar sesión
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="container">
+
+    <!-- LEFT -->
+    <aside class="left-pane">
+
+      <!-- CREAR PUBLICACIÓN -->
+      <section class="create-box">
+        <h3>Crear publicación</h3>
+
+        <div class="editor-toolbar">
+          <button data-cmd="bold"><i class="fa-solid fa-bold"></i></button>
+          <button data-cmd="italic"><i class="fa-solid fa-italic"></i></button>
+          <button data-cmd="underline"><i class="fa-solid fa-underline"></i></button>
+          <button data-cmd="link"><i class="fa-solid fa-link"></i></button>
+          <button data-cmd="image"><i class="fa-solid fa-image"></i></button>
+        </div>
+
+        <!-- EDITOR -->
+        <div id="editor" class="editor" contenteditable="true"></div>
+
+        <select id="postCategory">
+          <option value="">Categoría (opcional)</option>
+          <option value="Tecnología">Tecnología</option>
+          <option value="Noticias">Noticias</option>
+          <option value="Arte & Diseño">Arte & Diseño</option>
+          <option value="Viajes">Viajes</option>
+          <option value="Gastronomía">Gastronomía</option>
+          <option value="Personal">Personal</option>
+        </select>
+
+        <div class="file-row">
+          <input id="newImg" type="file" accept="image/*" multiple>
+          <span class="file-hint">Puedes subir varias imágenes</span>
+        </div>
+
+        <div class="actions-row">
+          <button id="btnPublish" class="btn-primary">Publicar</button>
+          <button id="btnClear" class="btn-ghost">Limpiar</button>
+        </div>
+      </section>
+
+      <!-- PERFIL MINI -->
+      <section class="profile-preview">
+        <h4>Tu perfil</h4>
+
+        <div class="pv">
+          <img id="pvAvatar" src="../images/avatar-placeholder.png">
+          <div>
+            <strong id="pvName">Cargando...</strong>
+            <p id="pvBio">---</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- GUARDADOS -->
+      <section class="saved-section">
+        <h4>Guardados</h4>
+        <ul id="savedList" class="saved-list"></ul>
+      </section>
+
+    </aside>
+
+    <!-- FEED -->
+    <section id="feed" class="feed" aria-live="polite">
+      <div id="infiniteLoader" class="infinite-loader">Cargando...</div>
+    </section>
+
+    <!-- RIGHT -->
+    <aside class="right-pane">
+
+      <!-- TENDENCIAS -->
+      <section class="trending">
+        <h4>Tendencias</h4>
+        <ul id="trendingList"></ul>
+      </section>
+
+      <!-- NOTAS -->
+      <section class="notes">
+        <h4>Notas compartidas</h4>
+        <div id="notesList"></div>
+        <button id="addNoteBtn" class="btn-ghost">Agregar nota</button>
+      </section>
+
+    </aside>
+
+  </main>
+
+  <!-- MODAL DE COMENTARIOS -->
+  <div id="commentsModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeComments" class="close">✕</button>
+      <div id="commentsArea"></div>
+    </div>
+  </div>
+
+  <!-- MODAL CONFIRMACIÓN -->
+  <div id="confirmModal" class="modal hidden">
+    <div class="modal-content small">
+      <div id="confirmBody"></div>
+      <div class="modal-actions">
+        <button id="confirmCancel" class="btn-ghost">Cancelar</button>
+        <button id="confirmOk" class="btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- SCRIPTS -->
+  <script src="../js/comments.js" defer></script>
+  <script src="../js/perfil-mini.js" defer></script>
+  <script src="../js/publicaciones.js" defer></script>
+
+</body>
+</html>
